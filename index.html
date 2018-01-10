@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Crescendo</title>
+
+    <!--                            Styling                                       -->
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css>
+    	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <!-- Javascripts -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--                           End of Styling                                       -->
+  </head>
+
+<!--                                 Start of Navigation                        -->
+  <body data-spy="scroll" data-target="#sidebar-wrapper">
+
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
+          <i class="fa fa-times"></i>
+        </a>
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger">Crescendo</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#top">Home</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#hdl_design">HDL Design</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#hardware_design">Hardware Design</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#gallery">Gallery</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#budget">Budget</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#team">Team</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!--                                 End of Navigation                        -->
+
+
+    <!--                                  Start of Header                           -->
+    <header class="header" id="top">
+      <div class="text-vertical-center">
+        <img src="img/logo.PNG">
+        <h3>FPGA MIDI Synthesizer</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg js-scroll-trigger" style="background-color:#1b2631; color:#fafafa">Find Out More</a>
+      </div>
+    </header>
+    <!--                                  End of Header                           -->
+
+
+    <!--                                Start of About Section                      -->
+    <section id="about" class="about container-fluid" style="background-color:#1b2631; color:#fafafa">
+
+<div style="background-color:#1b2631; color:#fafafa" >
+  <div class="row">
+    <div class="col-sm-8">
+      <h2 style="color:white; font-weight:900">About Crescendo</h2><br>
+      <p>Our team created a MIDI synthesizer which accepts data through either wired or a wireless connection. This data is sent to a decoder which sorts the input bytes, determine the definition of the bytes and proceeds to change the state of the FPGA. This is written to memory. The synthesizer reads this data and processes it in preparation to the digital to analog converter. This DAC turns the digital data into an analog signal. After this process, the resulting waves are outputted as music.</p>
+    </div>
+    <div class="col-sm-4">
+      <img src="img/main_pic.JPG" class="img-responsive" style="max-width:300px;max-height:300px"> </img>
+      <!--<span class="glyphicon glyphicon-signal logo"></span>-->
+    </div>
+  </row>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="img/bluesmirf_pic.png" class="img-responsive" style="max-width:300px;max-height:300px"> </img>
+    </div>
+    <div class="col-sm-8">
+      <h2 style="color:white">Our Features</h2><br>
+      <li>Wireless Bluetooth Interface through BlueSMiRF Modem</li>
+<li>Wired input through 5 pin DIN connector and 61 key, velocity sensitive MIDI keyboard</li>
+<li>Spartan 6 FPGA for sound synthesis</li>
+<li>3.5mm aux cable compatible</li>
+    </div>
+  </div>
+</row>
+
+<div class="row">
+  <div class="col-sm-8">
+    <h2 style="color:white">Judging Criteria</h2><br>
+    <li>Cost
+<li>Dynamic Range</li>
+<li>Output Error</li>
+<li>Speed (Frequency, Latency)</li>
+<li>Output Voltage Range Accuracy</li>
+  </div>
+  <div class="col-sm-4">
+    <span class="glyphicon glyphicon-signal logo"></span>
+  </div>
+</div>
+
+  </div>
+
+</div>
+</section>
+<!--                                End of About Section                      -->
+
+
+
+
+    <!--                            Start of HDL Design Section                 -->
+    <section id="hdl_design" class="about" style="background-color:#fafafa; color:#1b2631">
+      <div class="container text-center">
+        <h2 style="color:#1b2631; font-weight:900">HDL Design</h2>
+        <p class="lead">The MIDI synthesizer uses two receivers, one decoder, a LUT and a sigma delta DAC to produce a bitstream.
+          This can be turned into a sound wave based on serial input. A combination of pipelining
+          and clock multiplication achieved accurate sound replication with an audio
+          resolution of 13 bits.
+        </p>
+      </div>
+      <center>
+      <img src="img/fpga_block_diagram.png" ></img>
+    </center>
+      <!-- /.container -->
+    </section>
+    <!--                            End of HDL Design Section                 -->
+
+
+    <!--                          Start of Hardware Design Section            -->
+    <section id="hardware_design" class="about" style="background-color:#1b2631; color:#fafafa">
+      <div class="container text-center">
+        <h2 style="color:#fafafa; font-weight:900">Hardware Design</h2>
+        <p class="lead">There are three main components: the first component is connected to the FPGA.
+          The second serial input, DIN connector, is connected to an octocoupler to manage
+          different grounds. Two low-pass filters lead to the 3.5mm headphone jack with a corner frequency of 28.219 kHZ.
+        </p>
+        <div class="col-sm-6">
+          <img src="img/hardware_design_pic.png" style="max-width:350px; max-height:350px"></img>
+        </div>
+        <div class="col-sm-6">
+          <img src="img/system_pic.jpg" style="max-width:350px; max-height:350px"></img>
+        </div>
+      </div>
+    </section>
+    <!--                          End of Hardware Design Section            -->
+
+    <!--                           Start of Gallery Section                 -->
+    <section id="gallery" class="about" style="background-color:#fafafa; color:#1b2631">
+    <div class="container">
+      <div class="mx-auto text-center">
+        <h2 style="font-weight:900">Gallery</h2>
+      </div>
+
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default" style="background-color:#fafafa">
+          <div class="panel-heading" style="background-color:#1b2631; color: #fafafa">
+            <h4 class="panel-title" style="text-align:center">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Images</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="slideshow-container">
+
+          <div class="mySlides">
+          <div class="numbertext">1 / 8</div>
+          <img src="img/model_image.PNG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">PCB Mockup</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">2 / 8</div>
+          <img src="img/3D_model.PNG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">3D Model of PCB</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">3 / 8</div>
+          <img src="img/outside_case.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">Case exterior</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">4 / 8</div>
+          <img src="img/inside_case.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">Case Interior</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">5 / 8</div>
+          <img src="img/keyboard.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">Keyboard</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">6 / 8</div>
+          <img src="img/keyboard_with_speakers.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">System hooked up to keyboard and speakers</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">7 / 8</div>
+          <img src="img/progress.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">Testing System 1</div>
+          </div>
+
+          <div class="mySlides">
+          <div class="numbertext">8 / 8</div>
+          <img src="img/setup1.JPG" style="width:100%; height:600px">
+          <div class="text" style="background-color:black; color:yellow">Final system build</div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          </div>
+          <br>
+
+          <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+          <span class="dot" onclick="currentSlide(8)"></span>
+          </div>
+          </div>
+        </div>
+        <div class="panel panel-default" style="background-color:#fafafa">
+          <div class="panel-heading" style="background-color:#1b2631; color: #fafafa">
+            <h4 class="panel-title" style="text-align:center">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Videos</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body"><div class="col-sm-6">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/89BbFDz0MyE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="col-sm-6">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/WaGQRWIr0mc" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!--                           End of Gallery Section                   -->
+
+<!--                           Start of Team Section                   -->
+  <section id="team" style="background-color:#1b2631">
+    <div class="container section-ourTeam">
+    	<div class="row">
+    		<div class="col-md-12 col-sm-12 col-xs-12 ourTeam-hedding text-center">
+    			<h1>Meet Our Team</h1>
+    		</div>
+    	</div>
+
+    	<div class="row">
+    		<div class="col-md-4 col-sm-4 col-xs-12">
+    			<div class="row section-success ourTeam-box text-center">
+    				<div class="col-md-12 section1">
+    					<img src="img/steven_pic.PNG">
+    				</div>
+    				<div class="col-md-12 section2">
+    					<p>Steven Duong</p><br>
+    					<h1>Computer Engineer</h1><br>
+    				</div>
+    				<div class="col-md-12 section3">
+    					<p>
+    						Website Design, HDL Design
+    					</p>
+    				</div>
+    				<div class="col-md-12 section4">
+    					<a class="fa fa-linkedin" aria-hidden="true" href="https://www.linkedin.com/in/steven-duong-73971ba2/ "target="_blank"></a>
+    					<a class="fa fa-envelope" aria-hidden="true" href="mailto:stvenduong@gmail.com" target="_blank"></a>
+    				</div>
+    			</div>
+    		</div>
+
+    		<div class="col-md-4 col-sm-4 col-xs-12">
+    			<div class="row section-success ourTeam-box text-center">
+    				<div class="col-md-12 section1">
+    					<img src="img/jameson_pic.PNG">
+    				</div>
+    				<div class="col-md-12 section2">
+    					<p>Jameson Thies</p><br>
+    					<h1>Computer Engineer</h1><br>
+    				</div>
+    				<div class="col-md-12 section3">
+    					<p>
+    						Project Manager, HDL Design, Analog Circuit Design
+    					</p>
+    				</div>
+    				<div class="col-md-12 section4">
+              <a class="fa fa-linkedin" aria-hidden="true" href="https://www.linkedin.com/in/jamesonthies/ "target="_blank"></a>
+    					<a class="fa fa-envelope" aria-hidden="true" href="mailto:jameson.thi@gmail.com" target="_blank"></a>
+    				</div>
+    			</div>
+    		</div>
+
+    		<div class="col-md-4 col-sm-4 col-xs-12">
+    			<div class="row section-success ourTeam-box text-center">
+    				<div class="col-md-12 section1">
+    					<img src="img/aaron_pic.PNG">
+    				</div>
+    				<div class="col-md-12 section2">
+    					<p>Aaron Cruz</p><br>
+    					<h1>Computer Engineer</h1>
+    				</div>
+    				<div class="col-md-12 section3">
+    					<p>
+    						HDL Design, Presentation Manager
+    					</p>
+    				</div>
+    				<div class="col-md-12 section4">
+              <a class="fa fa-linkedin" aria-hidden="true" href="https://www.linkedin.com/in/aaron-cruz/ "target="_blank"></a>
+    					<a class="fa fa-envelope" aria-hidden="true" href="mailto:aar.m.cruz@gmail.com" target="_blank"></a>
+    				</div>
+    			</div>
+    		</div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    			<div class="row section-success ourTeam-box text-center">
+    				<div class="col-md-12 section1">
+    					<img src="img/sal_pic.PNG">
+    				</div>
+    				<div class="col-md-12 section2">
+    					<p>Saleh Alharran</p><br>
+    					<h1>Electrical Engineer</h1>
+    				</div>
+    				<div class="col-md-12 section3">
+    					<p>
+    						PCB Design
+    					</p>
+    				</div>
+    				<div class="col-md-12 section4">
+              <a class="fa fa-linkedin" aria-hidden="true" href=""target="_blank"></a>
+    					<a class="fa fa-envelope" aria-hidden="true" href="mailto:saleh_alharran@hotmail.com" target="_blank"></a>
+    				</div>
+    			</div>
+    		</div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    			<div class="row section-success ourTeam-box text-center">
+    				<div class="col-md-12 section1">
+    					<img src="img/andy_pic.PNG">
+    				</div>
+    				<div class="col-md-12 section2">
+    					<p>Andy Risser</p><br>
+    					<h1>Computer Engineer</h1>
+    				</div>
+    				<div class="col-md-12 section3">
+    					<p>
+    						Report Manager, Parts Manager
+    					</p>
+    				</div>
+    				<div class="col-md-12 section4">
+              <a class="fa fa-linkedin" aria-hidden="true" href="https://www.linkedin.com/in/andy-risser-651b28154/"target="_blank"></a>
+    					<a class="fa fa-envelope" aria-hidden="true" href="mailto:andy.risser@gmail.com" target="_blank"></a>
+    				</div>
+    			</div>
+    		</div>
+
+    	</div> <br><br>
+    </div>
+  </section>
+  <!--                           End of Team Section                   -->
+
+  <!--                           Start of Footer Section                   -->
+    <footer id="contact" style="background-color:#fafafa">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto text-center">
+            <h4>
+              <strong style="font-weight:900">Team Crescendo</strong>
+            </h4>
+            <p>San Diego State University
+              <br>San Diego, CA 92115</p>
+
+            <br>
+
+            <hr class="small">
+            <p class="text-muted">Copyright &copy; Crescendo 2017</p>
+          </div>
+        </div>
+      </div>
+      <a id="to-top" href="#top" class="btn btn-dark btn-lg js-scroll-trigger">
+        <i class="fa fa-chevron-up fa-fw fa-1x"></i>
+      </a>
+    </footer>
+    <!--                           End of Footer Section                   -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.js"></script>
+
+    <!--    Javascript for slide carousel -->
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
+
+
+
+  </body>
+
+</html>
